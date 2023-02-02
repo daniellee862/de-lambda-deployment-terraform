@@ -10,6 +10,7 @@ resource "aws_s3_bucket" "data_bucket" {
 resource "aws_s3_object" "lambda_code" {
   key = "s3_file_reader/function.zip"
   source = "${path.module}/../function.zip"
+  bucket = aws_s3_bucket.code_bucket.bucket
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
